@@ -15,7 +15,7 @@
         }
 
         h2 {
-            margin-left: 100px;
+            margin-left: 130px;
         }
 
         #form .txt {
@@ -35,59 +35,81 @@
             background-color: royalblue;
             color: white;
             border-radius: 10px;
-            margin-left: 150px;
+            margin-left: 170px;
         }
+         #baoloi{
+            color: red;
+            margin-left: 145px;
+            font-weight: bold;
+
+        }
+       
     </style>
 </head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 <body>
-    <form id="form" name="form">\
+    <form id="form" name="frm" ng-app="myapp" ng-controller="myCtrl">\
         <h2>Đăng kí Thành Viên</h2>
         <p>
             <label> Mã Sinh Viên</label> <br>
-            <input id="masv" type="text" class="txt">
+            <input  type="text" class="txt" ng-model="mssv" required minlength="0"
+          maxlength="7" name="ms">
+            <em ng-hide="frm.ms.$valid">Vui lòng nhập mã sinh viên</em>
         </p>
         <p>
             <label> Họ và tên</label> <br>
-            <input id="hoten" type="text" class="txt">
+            <input type="text" class="txt" ng-model="name" required name="hoten">
+            <em ng-hide="frm.hoten.$valid">Vui lòng nhập họ và tên</em>
         </p>
         <p>
             <label>Email</label> <br>
-            <input id="email" type="email" class="txt">
+            <input  type="email" class="txt" name="Email" ng-model="email" required>
+            <em ng-hide="frm.Email.$valid">Vui lòng nhập email</em>
         </p>
         <p>
         <fieldset id="fs1">
             <legend>Giới Tính</legend>
-            <input type="radio" name="gioitinh" value="Nam"> <label>Nam</label>
-            <input type="radio" name="gioitinh" value="Nữ"> <label>Nữ</label>
+            <input type="radio" name="gioitinh" value="Nam" ng-model="gioitinh"> <label>Nam</label>
+            <input type="radio" name="gioitinh" value="Nữ" ng-model="gioitinh"> <label>Nữ</label>
+            <br><em ng-hide="gioitinh == 'Nam' ||gioitinh == 'Nữ'"><hr>Vui lòng chọn giới tính</em>
         </fieldset>
         </p>
         <p>
         <fieldset id="fs1">
             <legend>Sở thích</legend>
-            <input type="checkbox" name="st"> <label>Đọc sách</label>
-            <input type="checkbox" name="st"> <label>Du lịch</label>
-            <input type="checkbox" name="st"> <label>Ẩm thực</label>
-            <input type="checkbox" name="st"> <label>Âm nhạc</label>
-            <input type="checkbox" name="st"> <label>Khác</label>
+            <input type="checkbox" name="st" ng-model="sothich"> <label>Đọc sách</label>
+            <input type="checkbox" name="st" ng-model="sothich2"> <label>Du lịch</label>
+            <input type="checkbox" name="st" ng-model="sothich3"> <label>Ẩm thực</label>
+            <input type="checkbox" name="st" ng-model="sothich4"> <label>Âm nhạc</label>
+            <input type="checkbox" name="st" ng-model="sothich5"> <label>Khác</label>
+        <br><em ng-hide="sothich== true ||sothich2== true || sothich3== true || sothich4== true||sothich5== true"><hr>Vui lòng chọn sở thích</em>
         </fieldset>
         </p>
         <p>
             <label>Quốc tịch</label>
-            <select id="quoctich" class="txt">
+            <select id="quoctich" class="txt" ng-model="qt">
                 <option value="0">Chọn quốc tịch</option>
                 <option value="1">Việt Nam</option>
                 <option value="2">Mỹ</option>
                 <option value="3">Nga</option>
             </select>
+            <br><em ng-hide=" qt == 1 || qt ==2 || qt ==3">Vui lòng chọn Quốc tịch</em>
         </p>
         <p>
             <label>Ghi chú</label> <br>
-            <textarea id="ghichu" cols="54" rows="5" class="txt"></textarea>
+            <textarea id="ghichu" cols="54" rows="5" class="txt" name="gc" ng-model="note" required ng-minlength="1"></textarea>
+            <em ng-hide="frm.gc.$valid" >Hãy điền ít nhất 50 kí tự!</em>
         </p>
-        <div id="baoloi"></div>
-        <button type="button" id="dangki">Đăng kí</button>
+        <div id="baoloi" ng-show="frm.$valid">Bạn đã điền đúng form</div><hr>
+        <button type="submit"  id="dangki">Đăng kí</button>
     </form>
 </body>
-
 </html>
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller('myCtrl',xuly);
+    function xuly($scope){
+
+    }
+
+</script>

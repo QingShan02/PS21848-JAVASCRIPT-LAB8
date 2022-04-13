@@ -97,7 +97,7 @@
         </p>
         <p>
             <label>Ghi chú</label> <br>
-            <textarea id="ghichu" cols="54" rows="5" class="txt" name="gc" ng-model="note" required ng-minlength="1"></textarea>
+            <textarea id="ghichu" cols="54" rows="5" class="txt" name="gc" ng-model="note" required ng-minlength="50"></textarea>
             <em ng-hide="frm.gc.$valid" >Hãy điền ít nhất 50 kí tự!</em>
         </p>
         <div id="baoloi" ng-show="frm.$valid">Bạn đã điền đúng form</div><hr>
@@ -111,5 +111,4 @@
     function xuly($scope){
 
     }
-
 </script>
